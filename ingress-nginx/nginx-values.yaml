@@ -1,0 +1,22 @@
+---
+
+controller:
+  ingressClassResource:
+    # -- Name of the ingressClass
+    name: ${env}-external-nginx
+  admissionWebhooks:
+    enabled: false
+  service:
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: nlb
+  metrics:
+    enabled: true
+    serviceMonitor:
+      additionalLabels:
+       prometheus: monitoring
+      enabled: true
+  
+#Required for ACME
+  watchIngressWithoutClass: true
+  extraArgs:
+   ingress-class: ${env}-external-nginx
