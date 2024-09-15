@@ -41,4 +41,3 @@ resource "aws_eks_addon" "csi_driver" {
   addon_version            = var.aws-ebs-csi_version
   service_account_role_arn = aws_iam_role.amazon_ebs_csi_driver[0].arn
 }
-
