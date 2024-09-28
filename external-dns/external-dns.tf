@@ -22,6 +22,7 @@ data "aws_iam_policy_document" "external-dns" {
 
 resource "aws_iam_role" "external-dns" {
   count = var.enable_external-dns ? 1 : 0
+
   assume_role_policy = data.aws_iam_policy_document.external-dns.json
   name               = "${var.eks_name}-external-dns"
 }
