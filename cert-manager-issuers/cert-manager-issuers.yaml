@@ -4,12 +4,12 @@
 # using a http01 solver that will work well with nginx-ingress. This is what
 # most small single-tenant clusters start with.
 
-_: &email mohit_verma1688@gmail.com
+_: &email mohit_*********.com
 _: &solvers
 - dns01:
     route53:
       region: us-east-1
-      hostedZoneID: Z100992510LUGZYBTY35U
+      hostedZoneID: Z1**********
 
 clusterIssuers:
 - name: letsencrypt-${env}

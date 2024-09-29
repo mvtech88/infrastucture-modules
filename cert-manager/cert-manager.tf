@@ -46,7 +46,7 @@ resource "aws_iam_policy" "CertManagerRoute53Access" {
         "route53:ChangeResourceRecordSets",
         "route53:ListResourceRecordSets"
       ],
-      "Resource": "arn:aws:route53:::hostedzone/Z100992510LUGZYBTY35U"
+      "Resource": "arn:aws:route53:::hostedzone/Z100***********"
     }
   ]
   })
