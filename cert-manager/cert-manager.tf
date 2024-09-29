@@ -69,24 +69,24 @@ resource "helm_release" "cert-manager" {
   namespace  = "kube-system"
   version    = var.cert-manager_helm_version
 
-  values = [
-    "${file("values-cert-manager.yaml")}"
-  ]
+ # values = [
+ #   "${file("values-cert-manager.yaml")}"
+ # ]
 
-#  set {
-#     name  = "installCRDs"
-#     value = true
-#   }
-# 
-#  set {
-#     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-#     value = aws_iam_role.cert-manager[0].arn
-#   }
-# 
-#  set {
-#     name  = "extraArgs[0]"
-#     value = "--issuer-ambient-credentials"
-#   }
+  set {
+     name  = "installCRDs"
+     value = true
+   }
+ 
+  set {
+     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+     value = aws_iam_role.cert-manager[0].arn
+   }
+ 
+  set {
+     name  = "extraArgs[0]"
+     value = "--issuer-ambient-credentials"
+   }
 #  
 #  set {
 #     name  = "prometheus.enabled"
