@@ -69,38 +69,38 @@ resource "helm_release" "cert-manager" {
   namespace  = "kube-system"
   version    = var.cert-manager_helm_version
 
-  set {
+set {
     name  = "installCRDs"
     value = true
   }
 
-  set {
+set {
     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
     value = aws_iam_role.cert-manager[0].arn
   }
 
-  set {
+set {
     name  = "extraArgs[0]"
     value = "--issuer-ambient-credentials"
   }
  
-  set {
+set {
     name  = "prometheus.enabled"
     value = true
   }
 
-  set {
+set {
     name  = "prometheus.servicemonitor.enabled"
     value = true
   }
 
 # You can provide a map of value using yamlencode. Don't forget to escape the last element after point in the name
-#  set {
-#    name  = "prometheus.servicemonitor\\.labels"
-#    type  = "string"
-#    value = <<-YAML
-#      prometheus: monitoring
-#      YAML
-#  }
+set {
+    name  = "prometheus.servicemonitor\\.labels"
+    type  = "string"
+    value = <<-YAML
+      prometheus: monitoring
+      YAML
+  }
 
 }
